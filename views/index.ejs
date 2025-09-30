@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("templates/header") %>
+    <style>
+        .image-container {
+            display: flex;
+            justify-content: space-between; /* una a la izquierda y otra a la derecha */
+            align-items: center;
+            flex-wrap: wrap; /* permite que se acomoden en pantallas pequeñas */
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 45%; /* cada imagen ocupa como máximo 45% del ancho */
+            height: auto;
+        }
+
+        /* Ajuste para pantallas pequeñas */
+        @media (max-width: 768px) {
+            .image-container {
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .image-container img {
+                max-width: 80%;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <!-- Espacio para el encabezado -->
+        </header>
+
+        <!-- Contenedor de imágenes -->
+        <div class="image-container">
+            <img src="img/izquierda.jpg" alt="Imagen Izquierda">
+            <img src="img/derecha.jpg" alt="Imagen Derecha">
+        </div>
+
+        <footer>
+            <%- include("templates/footer") %>
+        </footer>
+    </div>
+</body>
+</html>
