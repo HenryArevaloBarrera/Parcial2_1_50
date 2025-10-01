@@ -1,22 +1,22 @@
-import Compania from "../models/compania.mjs";
+import Usuario from "../models/usuario.mjs";
 
-// Obtener todas las compañías
+// Obtener todos los usuarios
 async function findAll(req, res) {
     try {
-        const result = await Compania.find();
+        const result = await Usuario.find();
         res.status(200).json({ state: true, data: result });
     } catch (error) {
         res.status(500).json({ state: false, error: error.message });
     }
 }
 
-// Buscar compañía por _id (ObjectId)
+// Buscar usuario por _id (ObjectId de Mongo)
 async function findById(req, res) {
     const { id } = req.params;
     try {
-        const result = await Compania.findById(id);
+        const result = await Usuario.findById(id);
         if (!result) {
-            return res.status(404).json({ state: false, error: "No se encontró la compañía" });
+            return res.status(404).json({ state: false, error: "No se encontró el usuario" });
         }
         res.status(200).json({ state: true, data: result });
     } catch (error) {
@@ -24,24 +24,24 @@ async function findById(req, res) {
     }
 }
 
-// Guardar nueva compañía
+// Guardar nuevo usuario
 async function save(req, res) {
     try {
-        const nuevaCompania = new Compania(req.body);
-        const result = await nuevaCompania.save();
+        const nuevoUsuario = new Usuario(req.body);
+        const result = await nuevoUsuario.save();
         res.status(201).json({ state: true, data: result });
     } catch (error) {
         res.status(500).json({ state: false, error: error.message });
     }
 }
 
-// Actualizar compañía por _id
+// Actualizar usuario por _id
 async function update(req, res) {
-    const { id } = req.params; 
+    const { id } = req.params;
     try {
-        const result = await Compania.findByIdAndUpdate(id, req.body, { new: true });
+        const result = await Usuario.findByIdAndUpdate(id, req.body, { new: true });
         if (!result) {
-            return res.status(404).json({ state: false, error: "No se encontró la compañía" });
+            return res.status(404).json({ state: false, error: "No se encontró el usuario" });
         }
         res.status(200).json({ state: true, data: result });
     } catch (error) {
@@ -49,13 +49,13 @@ async function update(req, res) {
     }
 }
 
-// Eliminar compañía por _id
+// Eliminar usuario por _id
 async function deleteById(req, res) {
     const { id } = req.params;
     try {
-        const result = await Compania.findByIdAndDelete(id);
+        const result = await Usuario.findByIdAndDelete(id);
         if (!result) {
-            return res.status(404).json({ state: false, error: "No se encontró la compañía" });
+            return res.status(404).json({ state: false, error: "No se encontró el usuario" });
         }
         res.status(200).json({ state: true, data: result });
     } catch (error) {

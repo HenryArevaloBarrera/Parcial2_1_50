@@ -5,13 +5,13 @@ const swaggerOptions = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "API de Juegos y Compañías",
+      title: "Parcial 2 - API de Productos",
       version: "1.0.0",
       description: "Documentación de la API REST con Swagger",
     },
     servers: [
       {
-        url: "https://taller1-electiva2.onrender.com/", // Pon tu URL base aquí, por ejemplo "http://localhost:3000"
+        url: "http://localhost:3000", 
       },
     ],
     components: {
